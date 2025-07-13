@@ -1,49 +1,5 @@
-import '@testing-library/jest-dom'
-
-// Mock triangle classification function for isolated testing
-function classifyTriangle(a: number, b: number, c: number) {
-  // Input validation
-  if (a <= 0 || b <= 0 || c <= 0) {
-    return {
-      sideA: a,
-      sideB: b,
-      sideC: c,
-      type: "",
-      isValid: false,
-      error: "All sides must be positive numbers",
-    }
-  }
-
-  // Triangle inequality theorem
-  if (a + b <= c || a + c <= b || b + c <= a) {
-    return {
-      sideA: a,
-      sideB: b,
-      sideC: c,
-      type: "",
-      isValid: false,
-      error: "These sides cannot form a valid triangle",
-    }
-  }
-
-  // Determine triangle type
-  let type = ""
-  if (a === b && b === c) {
-    type = "Equilateral"
-  } else if (a === b || b === c || a === c) {
-    type = "Isosceles"
-  } else {
-    type = "Scalene"
-  }
-
-  return {
-    sideA: a,
-    sideB: b,
-    sideC: c,
-    type,
-    isValid: true,
-  }
-}
+import { classifyTriangle } from '../lib/classifyTriangle'
+// Note: Do not import '@testing-library/jest-dom' here for Bun compatibility.
 
 describe('Triangle Classification Logic', () => {
   describe('Input Validation', () => {
