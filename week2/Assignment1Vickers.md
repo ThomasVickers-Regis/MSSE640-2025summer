@@ -129,13 +129,12 @@ Choose **one** of the following questions that interests you most. Base your res
 
 ## My Response
 
-*[Your response to the selected question will be added here]*
-
-**Selected Question**: [Indicate which question you chose]
+**Selected Question**: #3 - If ChatGPT is a "blurry JPEG of the Web," what are the risks of using such tools in academic, journalistic, or legal settings? Refer to: "ChatGPT Is a Blurry JPEG of the Web"
+Evaluate the implications of lossy AI-generated content. How do accuracy, originality, and accountability suffer or thrive in such systems?
 
 **Response**:
+There is no question that AI is transformative and just getting started. The appeal of creating artificial intelligence that doesn't get tired and can perform any task a human can do is obvious. However, that is not the kind of AI we have today. LLMs, as shown in the "blurry JPEG" metaphor, highlight many issues with modern AI. AI is a vast subject area with many variations. Most breakthroughs today do not come directly from LLMs, but from combining traditional AI training on specific topics with LLMs to better understand the material they're trained on. These highly tailored AIs can make breakthroughs in fields by analyzing huge amounts of data to find accurate answers. LLMs alone can reason; however, their reasoning engines are mainly designed to keep the AI focused on the topic. You can't ask them to use all human knowledge to create a new cure for cancer. They can only return what was already discovered or created. That's why they seem to excel at learning things that take most people decades—because someone has already mastered it for them. A computer is great at processing large datasets quickly and providing answers, while a human takes years and still might be wrong. But those mistakes often drive scientific progress. People are passionate about their ideas and develop original concepts—even if they're wrong. Every famous scientist has been wrong about some ideas, and some were even considered radical for their time. Thanks to humans' ability to be original and explore strange ideas, some of the biggest breakthroughs in history have happened. AI doesn't have that same luxury because everyone expects its answers to be 100% factually correct. When a non-expert uses an LLM, they rely on the data it provides. If it designs an application in a specific way, there's likely a reason they didn't understand. It's only after someone becomes an expert and forms their own opinions on how to best do a task that they start noticing issues with LLMs. As AI improves in accuracy and reliability, new challenges will emerge for future generations—those who will only know an always-correct AI and depend on it. 
 
-[Your 500-800 word response goes here]
 
 ---
 
