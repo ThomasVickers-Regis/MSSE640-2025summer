@@ -268,26 +268,22 @@ These unit tests were chosen to cover:
 ### Successful Program Runs
 
 #### Equilateral Triangle Classification
-![Equilateral Triangle](screenshots/equilateral-triangle.png)
+![Equilateral Triangle](./assets/SS1%20equalateral.png)
 *Figure 1: Successful classification of an equilateral triangle (5, 5, 5)*
 
 #### Isosceles Triangle Classification
-![Isosceles Triangle](screenshots/isosceles-triangle.png)
+![Isosceles Triangle](./assets/SS2%20Isosceles.png)
 *Figure 2: Successful classification of an isosceles triangle (5, 5, 3)*
 
 #### Scalene Triangle Classification
-![Scalene Triangle](screenshots/scalene-triangle.png)
+![Scalene Triangle](./assets/SS3%20scalaene.png)
 *Figure 3: Successful classification of a scalene triangle (3, 4, 5)*
 
 ### Unit Test Runs
 
 #### Test Suite Execution
-![Unit Tests](screenshots/unit-tests.png)
+![Unit Tests](./assets/SS4%20Testing.png)
 *Figure 4: Successful execution of all unit tests with 100% coverage*
-
-#### API Endpoint Testing
-![API Tests](screenshots/api-tests.png)
-*Figure 5: API endpoint testing with various input scenarios*
 
 ---
 
@@ -308,18 +304,6 @@ These unit tests were chosen to cover:
 2. **Performance Requirements**: Add performance benchmarks for large input sets
 3. **Accessibility Testing**: Include accessibility testing requirements for web applications
 4. **Documentation Standards**: Require API documentation using tools like Swagger/OpenAPI
-
-### Technical Enhancements
-1. **Database Integration**: Add persistence layer for storing triangle classifications
-2. **User Authentication**: Implement user accounts to track classification history
-3. **Advanced Visualizations**: Add 3D triangle rendering and angle calculations
-4. **Mobile Application**: Develop native mobile apps for iOS and Android
-
-### Educational Value
-1. **Real-world Scenarios**: Include more complex geometric problems
-2. **Team Collaboration**: Emphasize pair programming and code review processes
-3. **CI/CD Integration**: Require automated testing and deployment pipelines
-4. **Security Considerations**: Add security testing requirements for web applications
 
 ---
 
