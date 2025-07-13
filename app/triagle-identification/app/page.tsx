@@ -96,19 +96,52 @@ export default function TriangleClassifier() {
     const height = 150
     const padding = 20
 
+    // Function to calculate triangle centroid (geometric center)
+    const calculateCentroid = (x1: number, y1: number, x2: number, y2: number, x3: number, y3: number) => {
+      return {
+        x: (x1 + x2 + x3) / 3,
+        y: (y1 + y2 + y3) / 3
+      }
+    }
+
+    // Function to center triangle points around the SVG center
+    const centerTriangle = (points: string) => {
+      const coords = points.split(' ').map(p => p.split(',').map(Number))
+      const centroid = calculateCentroid(coords[0][0], coords[0][1], coords[1][0], coords[1][1], coords[2][0], coords[2][1])
+      
+      const svgCenterX = width / 2
+      const svgCenterY = height / 2
+      
+      const offsetX = svgCenterX - centroid.x
+      const offsetY = svgCenterY - centroid.y
+      
+      return coords.map(([x, y]) => `${x + offsetX},${y + offsetY}`).join(' ')
+    }
+
     // Calculate triangle points based on type
     let points = ""
     let sideLabels = { a: "", b: "", c: "" }
+    // Restore original label positions
+    const labelPositions = {
+      a: { x: width - 10, y: height - 5 }, // bottom right
+      b: { x: 10, y: height - 5 },        // bottom left
+      c: { x: width / 2, y: 15 }          // top center
+    }
 
     if (type === "Equilateral") {
       // Equilateral triangle - all sides equal
-      const centerX = width / 2
-      const topY = padding
-      const bottomY = height - padding
-      const halfWidth = (width - 2 * padding) / 2
-      
-      points = `${centerX},${topY} ${centerX - halfWidth},${bottomY} ${centerX + halfWidth},${bottomY}`
-      
+      const centerX = width / 2;
+      const centerY = height / 2 + 10; // shift down
+      const topY = centerY - 55; // more vertical spread
+      const bottomY = centerY + 45;
+      const halfWidth = 50; // wider base
+      const x1 = centerX;
+      const y1 = topY;
+      const x2 = centerX - halfWidth;
+      const y2 = bottomY;
+      const x3 = centerX + halfWidth;
+      const y3 = bottomY;
+      points = `${x1},${y1} ${x2},${y2} ${x3},${y3}`;
       sideLabels = {
         a: `${sideA}`,
         b: `${sideB}`,
@@ -116,14 +149,18 @@ export default function TriangleClassifier() {
       }
     } else if (type === "Isosceles") {
       // Isosceles triangle - two sides equal
-      const centerX = width / 2
-      const topY = padding
-      const bottomY = height - padding
-      const baseWidth = (width - 2 * padding) * 0.8
-      const heightRatio = 0.6
-      
-      points = `${centerX},${topY} ${centerX - baseWidth/2},${bottomY} ${centerX + baseWidth/2},${bottomY}`
-      
+      const centerX = width / 2;
+      const centerY = height / 2 + 10; // shift down
+      const topY = centerY - 50;
+      const bottomY = centerY + 40;
+      const baseWidth = 80; // wider base
+      const x1 = centerX;
+      const y1 = topY;
+      const x2 = centerX - baseWidth/2;
+      const y2 = bottomY;
+      const x3 = centerX + baseWidth/2;
+      const y3 = bottomY;
+      points = `${x1},${y1} ${x2},${y2} ${x3},${y3}`;
       sideLabels = {
         a: `${sideA}`,
         b: `${sideB}`,
@@ -132,22 +169,34 @@ export default function TriangleClassifier() {
     } else {
       // Scalene triangle - all sides different
       const maxSide = Math.max(sideA, sideB, sideC)
-      const scale = (width - 2 * padding) / maxSide
+      const scale = Math.min((width - 2 * padding) / maxSide, (height - 2 * padding) / maxSide) * 0.8
       
       // Use Heron's formula to calculate height
       const s = (sideA + sideB + sideC) / 2
       const area = Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC))
       const heightScaled = (area * 2 / maxSide) * scale
       
-      const x1 = padding
-      const y1 = height - padding
-      const x2 = padding + sideA * scale
-      const y2 = height - padding
-      const x3 = padding + (sideA * sideA + sideB * sideB - sideC * sideC) / (2 * sideA) * scale
-      const y3 = height - padding - heightScaled
+      // Calculate base points
+      const x1 = -sideA * scale / 2
+      const y1 = heightScaled / 2
+      const x2 = sideA * scale / 2
+      const y2 = heightScaled / 2
+      
+      // Calculate third point using cosine law
+      const cosA = (sideB * sideB + sideC * sideC - sideA * sideA) / (2 * sideB * sideC)
+      const sinA = Math.sqrt(1 - cosA * cosA)
+      const x3 = sideC * scale * cosA
+      const y3 = -sideC * scale * sinA
       
       points = `${x1},${y1} ${x2},${y2} ${x3},${y3}`
       
+      // Center the triangle
+      points = centerTriangle(points)
+      // Shift all points down by 10px for better vertical centering
+      points = points.split(' ').map(p => {
+        const [x, y] = p.split(',').map(Number);
+        return `${x},${y + 10}`;
+      }).join(' ');
       sideLabels = {
         a: `${sideA}`,
         b: `${sideB}`,
@@ -158,23 +207,29 @@ export default function TriangleClassifier() {
     return (
       <div className="flex justify-center mb-8">
         <svg width={width} height={height} className="text-blue-400">
+          <defs>
+            <filter id="triangle-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#60a5fa" floodOpacity="0.5" />
+            </filter>
+          </defs>
           <polygon
             points={points}
-            fill="none"
+            fill="#60a5fa22"
             stroke="currentColor"
-            strokeWidth="3"
-            className="drop-shadow-lg"
+            strokeWidth="4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            filter="url(#triangle-shadow)"
           />
-          
-          {/* Add side labels */}
-          <text x={width / 2} y="15" textAnchor="middle" className="text-xs fill-gray-300">
-            {sideLabels.c}
+          {/* Side labels at fixed positions */}
+          <text x={labelPositions.a.x} y={labelPositions.a.y} textAnchor="middle" className="text-xs fill-gray-300">
+            {sideLabels.a}
           </text>
-          <text x="10" y={height - 5} textAnchor="middle" className="text-xs fill-gray-300">
+          <text x={labelPositions.b.x} y={labelPositions.b.y} textAnchor="middle" className="text-xs fill-gray-300">
             {sideLabels.b}
           </text>
-          <text x={width - 10} y={height - 5} textAnchor="middle" className="text-xs fill-gray-300">
-            {sideLabels.a}
+          <text x={labelPositions.c.x} y={labelPositions.c.y} textAnchor="middle" className="text-xs fill-gray-300">
+            {sideLabels.c}
           </text>
         </svg>
       </div>
