@@ -73,6 +73,83 @@ The application supports multiple input methods:
 | "abc" | 2 | 3 | "Please enter valid numbers for all sides" | Non-numeric input |
 | 1.5 | 2.5 | 3.5 | Scalene | Decimal values |
 
+### Triangle Classification Logic
+
+The program uses a systematic approach to determine triangle types through side comparison:
+
+#### Step 1: Input Validation
+```typescript
+// Check for positive values
+if (a <= 0 || b <= 0 || c <= 0) {
+    return { isValid: false, error: "All sides must be positive numbers" };
+}
+```
+
+#### Step 2: Triangle Inequality Theorem
+```typescript
+// Validate triangle inequality: sum of any two sides > third side
+if (a + b <= c || a + c <= b || b + c <= a) {
+    return { isValid: false, error: "These sides cannot form a valid triangle" };
+}
+```
+
+#### Step 3: Side Comparison Logic
+```typescript
+// Determine triangle type through side comparison
+let type = "";
+
+// Check for equilateral: all sides equal
+if (a === b && b === c) {
+    type = "Equilateral";
+}
+// Check for isosceles: exactly two sides equal
+else if (a === b || b === c || a === c) {
+    type = "Isosceles";
+}
+// Default to scalene: all sides different
+else {
+    type = "Scalene";
+}
+```
+
+#### Mathematical Comparison Examples
+
+**Equilateral Triangle (5, 5, 5):**
+- Comparison: `5 === 5 && 5 === 5` → `true && true` → `true`
+- Result: All sides are equal → **Equilateral**
+
+**Isosceles Triangle (5, 5, 3):**
+- Comparison: `5 === 5 && 5 === 3` → `true && false` → `false`
+- Fallback: `5 === 5 || 5 === 3 || 5 === 3` → `true || false || false` → `true`
+- Result: Exactly two sides equal → **Isosceles**
+
+**Scalene Triangle (3, 4, 5):**
+- Comparison: `3 === 4 && 4 === 5` → `false && false` → `false`
+- Fallback: `3 === 4 || 4 === 5 || 3 === 5` → `false || false || false` → `false`
+- Result: All sides different → **Scalene**
+
+#### Edge Case Handling
+
+**Decimal Precision:**
+```typescript
+// Handle floating-point precision issues
+const epsilon = 0.0001;
+const isEqual = (x: number, y: number) => Math.abs(x - y) < epsilon;
+```
+
+**Order Independence:**
+The classification logic works regardless of the order of sides:
+- `(5, 5, 3)` → Isosceles
+- `(5, 3, 5)` → Isosceles  
+- `(3, 5, 5)` → Isosceles
+
+**Triangle Inequality Validation:**
+```typescript
+// Example: (1, 1, 10)
+// 1 + 1 = 2, which is NOT > 10
+// Therefore, this cannot form a valid triangle
+```
+
 ---
 
 ## Unit Tests
