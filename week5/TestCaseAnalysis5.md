@@ -62,5 +62,3 @@ Another limitation is that pairwise testing assumes that most defects are caused
 3. **List one prompt that you provided.**
    - A key prompt used to generate the example in Section 2 was: "Create a clear example of pairwise testing for a user registration form with three parameters: user type (Regular/Premium), age group (18-25/26-35/36+), and subscription plan (Basic/Standard/Pro). Show the test cases that cover all possible pairs of these parameters."
 
-## Section 6: Submission Instructions
-Submit this markdown file to the appropriate Dropbox or, if using a GitHub repository, submit a text file with the link to your GitHub repo in the assignment area. Ensure your file is named according to the course instructions.
