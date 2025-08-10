@@ -1,94 +1,196 @@
-# Assignment #4 - Git Branching and Workflow
+# Assignment 5 Collaboration File
 
-## Objective
-This assignment focuses on working with branches and implementing a basic Git Flow workflow. The goal is to understand and practice branch management, feature development, and the pull request process.
+## Team C Collaboration Instructions
 
-## Activity 1: Working with Feature Branches
+**Team Members:**
+- Spencer
+- Ben  
+- Thomas (Repository Owner)
+- Nigel
 
-### Step 1: Create a Feature Branch in Visual Studio Code
-First, I opened my project repository in Visual Studio Code and followed these steps:
-1. Navigated to the Source Control view (three dots connected by lines icon)
-2. Clicked on the current branch name at the bottom-left
-3. Selected "+ Create new branch..." from the pop-up menu
-4. Named the new branch "feature/assignment4"
+This file is designed for team collaboration using Git workflow. Each team member will follow these steps to contribute to their teammates' repositories.
 
-[![Step 1: Creating a new branch](./assets/SS1%20git%20branch.png)](./assets/SS1%20git%20branch.png)
+---
 
-### Step 2: Verify Local and Remote Branches
-To verify the branch creation and check the status of local and remote branches, I used the following commands:
+## Step 1: Create Your Own Collaboration File
 
+**Action**: Create a new file in your repository called "Assignment5CollaborationFile.md"
+
+**Instructions**:
+1. In your local repository, create a new file named `Assignment5CollaborationFile.md`
+2. Add a basic header and description (like this file)
+3. Commit and push this file to your main branch
+4. Share your repository URL with your team members
+
+- **Thomas**: https://github.com/ThomasVickers-Regis/msse642-2025summer.git
+
+---
+
+## Step 2: Clone Your Teammates' Repositories
+
+**Action**: Each member will clone the repositories of other team members
+
+**Instructions**:
+1. Get the repository URLs from your teammates (see above)
+2. Open your terminal/command prompt
+3. Navigate to a directory where you want to store the cloned repositories
+4. Run the clone command for each teammate's repository:
+   ```bash
+   git clone [teammate-repository-url]
+   ```
+5. Verify the clone was successful by checking the directory contents
+
+**Example for Team C**:
 ```bash
-git branch
-```
-This command showed my new branch with an asterisk (*) indicating it as the current working branch.
-
-[![Step 2a: Local branches](./assets/SS1%20git%20branch.png)](./assets/SS1%20git%20branch.png)
-
-```bash
-git branch -r
-```
-This command showed only the remote main branch, as the feature branch hadn't been pushed yet.
-
-[![Step 2b: Remote branches](./assets/SS2%20git%20branch%20r.png)](./assets/SS2%20git%20branch%20r.png)
-
-### Step 3: Commit Changes and Publish the Branch
-After making changes to the README.md file:
-1. Used the Source Control panel to stage changes
-2. Added a descriptive commit message: "week 6 created"
-3. Committed the changes
-4. Published the branch to GitHub
-
-[![Step 3: Committing and publishing changes](./assets/SS3%20Publish%20branch.png)](./assets/SS3%20Publish%20branch.png)
-
-### Step 4: Create a Pull Request on GitHub
-On GitHub:
-1. Clicked the "Compare & pull request" button from the yellow notification bar
-2. Set the base branch to main and compare branch to feature/assignment4
-3. Added a title and description
-4. Created the pull request
-5. Merged the changes
-6. Deleted the remote branch
-
-#### Pull Request Process Screenshots:
-
-1. Opening the Pull Request:
-[![Step 4a: Opening pull request](./assets/ss4%20git%20PR.png)](./assets/ss4%20git%20PR.png)
-
-2. Pull Request Created:
-[![Step 4b: Pull request created](./assets/SS5%20PR.png)](./assets/SS5%20PR.png)
-
-3. Pull Request Merged:
-[![Step 4c: Pull request merged](./assets/ss6%20PR%20created.png)](./assets/ss6%20PR%20created.png)
-
-4. Remote Branch Deleted:
-[![Step 4d: Remote branch deleted](./assets/SS7%20PR%20Deleted.png)](./assets/SS7%20PR%20Deleted.png)
-
-**Question: Will the local feature branch still exist?**
-Yes, the local feature branch will still exist. Deleting the remote branch on GitHub only removes the branch from the remote repository and has no effect on the local branch on your computer.
-
-### Step 5: Clean Up Local Repository
-To clean up the local repository after merging:
-1. Updated local metadata:
-```bash
-git fetch -p
+git clone https://github.com/ThomasVickers-Regis/msse642-2025summer.git
+git clone https://github.com/SpencerLamphere/msse642-2025summer
+git clone [Ben's-repo-url]
+git clone [Nigel's-repo-url]
 ```
 
-2. Switched back to main branch:
+---
+
+## Step 3: Create a Local Branch with Your Name
+
+**Action**: Make a local branch that is named with your name
+
+**Instructions**:
+1. Navigate into the cloned repository directory
+2. Check the current branch: `git branch`
+3. Create and switch to a new branch with your name:
+   ```bash
+   git checkout -b [your-name]
+   ```
+4. Verify you're on the new branch: `git branch`
+
+**Example for Team C**:
 ```bash
-git checkout main
+cd msse642-2025summer
+git checkout -b spencer
+# or
+git checkout -b ben
+# or
+git checkout -b nigel
 ```
 
-3. Pulled the latest changes:
+---
+
+## Step 3.5: Update Remote URL (If Needed)
+
+**Action**: Update the remote URL to point to your fork if you don't have write access
+
+**Instructions**:
+1. After cloning, check your remote configuration:
+   ```bash
+   git remote -v
+   ```
+2. If you get permission errors when pushing, you need to update remote to your fork:
+   - Update the remote to point to your fork:
+   ```bash
+   git remote set-url origin https://github.com/[your-username]/[repository-name].git
+   ```
+3. Verify the remote is updated:
+   ```bash
+   git remote -v
+   ```
+
+**Example**:
 ```bash
-git pull
+# If you cloned Ben's repo but don't have write access
+git remote set-url origin https://github.com/ThomasVickers-Regis/msse642.git
+```
+```bash
+git remote -v
+#should show your forks address as the remote address
+origin  https://github.com/ThomasVickers-Regis/msse642.git (fetch)
+origin  https://github.com/ThomasVickers-Regis/msse642.git (push)
 ```
 
-4. Deleted the local feature branch:
-```bash
-git branch -d feature/assignment4
+---
+
+## Step 4: Make Changes, Commit, and Publish the Branch
+
+**Action**: Make changes to the file, commit, and publish the branch
+
+**Instructions**:
+1. Open the `Assignment5CollaborationFile.md` file
+2. Add your name and a brief message to the file (see format below)
+3. Save the file
+4. Stage your changes: `git add Assignment5CollaborationFile.md`
+5. Commit your changes with a descriptive message:
+   ```bash
+   git commit -m "Add [your-name] to collaboration file"
+   ```
+6. Push your branch to the remote repository:
+   ```bash
+   git push origin [your-branch-name]
+   ```
+
+**Example File Addition**:
+```markdown
+## Team Members Who Have Contributed
+
+- **Thomas Vickers** - Repository owner
+- **Spencer** - Added on [date]
+- **Ben** - Added on [date]
+- **Nigel** - Added on [date]
 ```
 
-[![Step 5: Branch cleanup completed](./assets/SS8%20Branch%20Cleanup.png)](./assets/SS8%20Branch%20Cleanup.png)
+---
+
+## Step 5: Submit a Pull Request
+
+**Action**: Submit a pull request to merge your branch
+
+**Instructions**:
+1. Go to the repository on GitHub/GitLab
+2. You should see a notification about your recently pushed branch
+3. Click "Compare & pull request" or "Create pull request"
+4. Fill in the pull request details:
+   - **Title**: "Add [your-name] to collaboration file"
+   - **Description**: Brief description of your changes
+5. Click "Create pull request"
+
+**Example Pull Request for Team C**:
+- **Title**: "Add Spencer to collaboration file"
+- **Description**: "Added my name to the team members list in the collaboration file as part of Assignment 5."
+
+## Screenshot
+
+### PR created on forked branch
+![Ben PR Header](./assets/SS1%20Ben%20PR%20Header.png)
+
+### PR submitted to teammate's repository
+![PR created Ben](./assets/SS2%20PR%20created%20Ben.png)
+
+---
+
+## Step 6: Review and Merge Pull Requests
+
+**Action**: The owner of the repo accepts or rejects the pull request
+
+**Instructions** (for repository owners):
+1. Go to the "Pull requests" tab in your repository
+2. Review each pull request:
+   - Check the changes made
+   - Ensure the branch name follows the naming convention
+   - Verify the commit message is descriptive
+3. If the changes look good:
+   - Click "Merge pull request"
+   - Confirm the merge
+   - Delete the branch (optional)
+4. If changes are needed:
+   - Add comments requesting modifications
+   - Wait for the contributor to update the PR
+
+---
+
+## Team Members Who Have Contributed
+
+*This section will be populated as team members complete their contributions*
+
+- **Thomas Vickers** - Repository owner
+- **Spencer** – Added on June 24, 2025
 
 ---
 
