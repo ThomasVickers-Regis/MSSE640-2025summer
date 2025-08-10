@@ -2,7 +2,7 @@
 
 ## Team C Collaboration Instructions
 
-**Team Members:**
+**Team Members:** (previous class)
 - Spencer
 - Ben  
 - Thomas (Repository Owner)
