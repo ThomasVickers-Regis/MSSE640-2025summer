@@ -31,12 +31,20 @@ sqrt_result = calc.square_root(16)  # Returns 4.0
 
 Run tests locally:
 ```bash
-python -m pytest
+# Navigate to the week7 directory first
+cd week7
+
+# Run tests with pytest
+python -m pytest test_calculator.py -v
+
+# Or run tests with unittest directly
+python -m unittest test_calculator.py -v
 ```
 
 Run tests with coverage:
 ```bash
-python -m pytest --cov=calculator --cov-report=html
+cd week7
+python -m pytest test_calculator.py --cov=calculator --cov-report=html
 ```
 
 ## CI/CD

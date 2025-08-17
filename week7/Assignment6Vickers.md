@@ -225,7 +225,14 @@ result = calc.add(5, 3)  # Returns 8
 
 Run tests locally:
 ```bash
-python -m pytest
+# Navigate to the week7 directory first
+cd week7
+
+# Run tests with pytest
+python -m pytest test_calculator.py -v
+
+# Or run tests with unittest directly
+python -m unittest test_calculator.py -v
 ```
 
 ## CI/CD
@@ -286,15 +293,15 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r week7/requirements.txt
     
     - name: Run tests with pytest
       run: |
-        python -m pytest test_calculator.py -v
+        python -m pytest week7/test_calculator.py -v
     
     - name: Run tests with coverage
       run: |
-        python -m pytest test_calculator.py --cov=calculator --cov-report=xml --cov-report=html
+        python -m pytest week7/test_calculator.py --cov=week7.calculator --cov-report=xml --cov-report=html
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
@@ -323,8 +330,8 @@ jobs:
     
     - name: Lint with flake8
       run: |
-        flake8 calculator.py test_calculator.py --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 calculator.py test_calculator.py --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 week7/calculator.py week7/test_calculator.py --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 week7/calculator.py week7/test_calculator.py --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 ```
 
 ---
@@ -415,6 +422,10 @@ pip install coverage
 ### Step 2: Run Coverage Locally
 
 ```bash
+# Navigate to week7 directory
+cd week7
+
+# Run coverage
 coverage run -m pytest test_calculator.py
 coverage report
 coverage html
@@ -432,7 +443,7 @@ Open `htmlcov/index.html` in your browser to see detailed coverage information.
 ![GitHub Actions Workflow](./assets/github-actions-workflow.png)
 
 ### Test Results
-![Test Results](./assets/test-results.png)
+![Test Results](Test%20Ran.png)
 
 ### Coverage Report
 ![Coverage Report](./assets/coverage-report.png)
