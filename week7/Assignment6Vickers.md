@@ -440,13 +440,13 @@ Open `htmlcov/index.html` in your browser to see detailed coverage information.
 ## Screenshots and Results
 
 ### GitHub Actions Workflow Running
-![GitHub Actions Workflow](./assets/github-actions-workflow.png)
+![GitHub Actions Workflow](./Github%20Actions.png)
 
 ### Test Results
 ![Test Results](Test%20Ran.png)
 
 ### Coverage Report
-![Coverage Report](./assets/coverage-report.png)
+![Coverage Report](./coverage.png)
 
 ---
 
